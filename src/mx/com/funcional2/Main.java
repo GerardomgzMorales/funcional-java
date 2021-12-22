@@ -1,9 +1,8 @@
 package mx.com.funcional2;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import mx.com.funcional2.clases.SoloImpares;
+import mx.com.funcional2.clases.Aleatorio;
 import mx.com.funcional2.clases.SoloPares;
 
 public class Main {
@@ -14,10 +13,11 @@ public class Main {
 	}
 
 	public Main() {
-		List<Integer> numerosIntegers = crearLista();
-		System.out.println(numerosIntegers);
-		List<Integer> paresNumerosIntegers = SuperFuncion.filtrar(numerosIntegers, new SoloPares());
-		System.out.println(paresNumerosIntegers);
+		List<Integer> numerosEnteros = SuperFuncion.proveer(5, new Aleatorio());
+		System.out.println(numerosEnteros);
+
+		List<Integer> numerosFiltrados = SuperFuncion.filtrar(numerosEnteros, new SoloPares());
+		System.out.println("\nNumeros Filtados: " + numerosFiltrados);
 		/*
 		 * List<Integer> cuadradosIntegers = elevarCuadrado(paresNumerosIntegers);
 		 * System.out.println(cuadradosIntegers); List<Integer> imprimeNumeroIntegers =
@@ -27,42 +27,4 @@ public class Main {
 		 * sumaNumerosCuadadosLong);
 		 */
 	}
-
-	private Long sumaCuadados(List<Integer> cuadradosIntegers) {
-		Long sumaLong = 0L;
-		for (Integer integer : cuadradosIntegers) {
-			sumaLong += Long.valueOf(integer.longValue());
-		}
-		return sumaLong;
-	}
-
-	private List<Integer> imprimeNumero(List<Integer> cuadradosIntegers) {
-		for (Integer integer : cuadradosIntegers) {
-			System.out.println(integer);
-		}
-		return cuadradosIntegers;
-	}
-
-	private List<Integer> elevarCuadrado(List<Integer> paresNumerosIntegers) {
-		List<Integer> nuevoasParesIntegers = new ArrayList<>();
-		for (Integer integer : paresNumerosIntegers) {
-			nuevoasParesIntegers.add(integer * integer);
-		}
-		return nuevoasParesIntegers;
-	}
-
-	private List<Integer> filtrarPares(List<Integer> numerosIntegers) {
-		List<Integer> nuevoasParesIntegers = new ArrayList<>();
-		for (Integer integer : numerosIntegers) {
-			if (integer % 2 == 0) {
-				nuevoasParesIntegers.add(integer);
-			}
-		}
-		return nuevoasParesIntegers;
-	}
-
-	private List<Integer> crearLista() {
-		return List.of(0, 1, 2, 5, 7, 88, 5, 77, 3, 99, 2, 10, 77, 4, 6, 11, -88, -8);
-	}
-
 }
