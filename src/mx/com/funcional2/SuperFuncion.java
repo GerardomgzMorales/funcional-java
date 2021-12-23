@@ -3,6 +3,7 @@ package mx.com.funcional2;
 import java.util.ArrayList;
 import java.util.List;
 
+import mx.com.funcional2.interfaces.Funcion;
 import mx.com.funcional2.interfaces.Predicado;
 import mx.com.funcional2.interfaces.Proveedor;
 
@@ -22,6 +23,14 @@ public class SuperFuncion {
 		List<Integer> resultadoIntegers = new ArrayList<>();
 		for (int i = 0; i < sInteger; i++) {
 			resultadoIntegers.add(provedor.obtener());
+		}
+		return resultadoIntegers;
+	}
+
+	public static List<Integer> transformar(List<Integer> numeros, Funcion funcion) {
+		List<Integer> resultadoIntegers = new ArrayList<>();
+		for (Integer integer : numeros) {
+			resultadoIntegers.add(funcion.elevacion(integer));
 		}
 		return resultadoIntegers;
 	}
